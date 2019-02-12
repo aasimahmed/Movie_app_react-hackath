@@ -4,7 +4,6 @@ import Movie from "./Movie/Movie";
 
 const Movies = ({movies}) => {
         if({movies}.movies.length === 0){
-            console.log({movies}.movies)
             return(
                 <div>
                 <p>nothign</p>
@@ -13,7 +12,8 @@ const Movies = ({movies}) => {
         }
         else{
         const movies_result = {movies}.movies.map(val => {
-            return <Movie title={val.title} poster={`https://image.tmdb.org/t/p/original${val.poster}`}/>
+           
+            return <Movie key={val.id}title={val.title} poster={`https://image.tmdb.org/t/p/original${val.poster_path}`}/>
         })
         return(
             <div class="movie_container">

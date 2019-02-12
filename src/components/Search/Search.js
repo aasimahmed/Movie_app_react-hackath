@@ -29,10 +29,11 @@ class Search extends Component{
 
     render(){
         return(
-            <section className="form_container">
+            <section className="form">
                 <Form searchvalue ={this.state.searchvalue} 
                       handleSubmit={this.handleSubmit} 
-                      handleChange={this.handleChange}/>
+                      handleChange={this.handleChange}
+                      className="search"/>
                 <Movies movies={this.state.results || undefined}/>
             </section>
         )

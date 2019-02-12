@@ -1,0 +1,28 @@
+.form_container{
+    display:grid;
+    height:10vh;
+    background-color:black;
+    grid-template-columns: 2fr 8fr 2fr;
+    grid-template-areas:"left search right";
+    color:white;
+}
+
+
+.form_container .form_subcontainer{
+    grid-area:search;
+    align-content:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.form_container .form_subcontainer li{
+    list-style:none;
+    justify-self:center;
+    display:inline-block;
+    padding:20px;
+    
+}
+
+.form_container .form_subcontainer form{
+    align-self: center;
+}

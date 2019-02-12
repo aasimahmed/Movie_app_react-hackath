@@ -5,9 +5,9 @@ import "./Form.css";
 const Form = ({handleChange, handleSubmit, searchvalue}) => {
     return(
     <div className="form_container">
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Search ..." value={searchvalue}
-
+        <form onSubmit={handleSubmit} className="form_subcontainer">
+            <li>Movies</li>
+            <input type="text" placeholder="Search ..." value={searchvalue} 
             onChange={handleChange} 
             onKeyDown = {(e) => {
                 if(e.which === 13){
@@ -17,6 +17,7 @@ const Form = ({handleChange, handleSubmit, searchvalue}) => {
                 }
             }}
             />
+            <li>Tv Shows</li>
         </form>
     </div>
     )
