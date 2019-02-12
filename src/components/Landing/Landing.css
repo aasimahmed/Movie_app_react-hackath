@@ -1,6 +1,6 @@
 #landing{
     display:grid;
-    height:100vh;
+    height:60vh;
     background-color:black;
     background: size 100;
     background-repeat: no-repeat;
@@ -14,3 +14,4 @@
 #landing .main_landing{
     grid-area: "middle";
 }
+
