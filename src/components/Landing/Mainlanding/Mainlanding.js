@@ -10,7 +10,7 @@ const Mainlanding = ({title, description, rating, releasedate, background}) => {
             <div>
               <span className="mainlanding_card_title">{title}</span><span> {releasedate} </span>
               <p> {rating}/10 </p>
-              <p>{description + "..."}</p>
+              <p>{description.slice(0,150) + "..."}</p>
             </div>
             <div>
 

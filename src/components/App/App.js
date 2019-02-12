@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Nav from "../Nav/Nav";
 import Landing from "../Landing/Landing"
-// import Search from "../Search/Search";
+import Search from "../Search/Search";
 
 const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 
@@ -42,7 +42,7 @@ class App extends Component{
 					<div className="app">
 						<Nav/>
 						<Landing nowPlaying={nowPlayingDetails}/>
-						{/* <Search/>  */}
+						<Search/>
 						}
           </div>
 						)
