@@ -4,7 +4,9 @@ import "./Rightlanding.css";
 
 const Rightlanding = () => {
     return(
-
+        <div>
+            <p>Right landing</p>
+        </div>
     )
 }
 
