@@ -44,18 +44,14 @@ class Landing extends Component{
 		
 		return(
 				<div id="landing">
-				<div> 
-					Side div
-				</div>
+
 					<Mainlanding className="main_landing" title={this.state.currentMovie.title} 
 										description={this.state.currentMovie.description}
 										releasedate={releasedate} 
 										rating ={this.state.currentMovie.rating}
 										background ={background}
 										/>
-				<div> 
-					Side div
-				</div>						
+			
 				</div>
 			)
 		}

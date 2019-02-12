@@ -8,8 +8,9 @@ header nav{
 display:grid;
 grid-template-columns: 1fr 6fr 5fr;
 grid-template-areas: "logo main nav";
-background-color:pink;
+background-color:black;
 margin: 0 auto;
+color:white;
 }
 
 header nav ul{
@@ -24,6 +25,10 @@ grid-area:nav;
 header nav ul li{
     float:right;
     padding:1.5em;
+}
+header nav ul li:hover{
+    background-color : #e969d8;
+    transition : background 1.5s;
 }
 
 header nav ul li #movies{

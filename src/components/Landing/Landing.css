@@ -1,14 +1,12 @@
 #landing{
     display:grid;
-    height:60vh;
+    height:100vh;
     background-color:black;
     background: size 100;
     background-repeat: no-repeat;
     width:100%;
     padding:0;
     margin:0;
-    grid-template-columns: 2fr 8fr 2fr;
-    grid-template-areas: "left middle right";
 }
 
 #landing .main_landing{
