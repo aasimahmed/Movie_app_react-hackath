@@ -1,0 +1,10 @@
+#landing .mainlanding_card{
+    color:white;
+    border:2px solid white;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100%;
+    height:100%;
+    display:grid;
+    grid-template-rows: 70% 10% auto;
+}

@@ -1,13 +1,13 @@
 import React from "react";
 import "./Mainlanding.css";
 
-const Mainlanding = ({title, description, rating,releasedate}) => {
+const Mainlanding = ({title, description, rating, releasedate, background}) => {
     return(
-        <div>
-          <p>{title}</p>
+        <div className="mainlanding_card" style={{backgroundImage: `url(${background})`}}>
+          <h2>{title}</h2>
           <p>{description}</p>
           <p>{rating}</p>
-          <p>{releasedate}</p>
+          <p>Release Date : {releasedate}</p>
         </div>
 
     )

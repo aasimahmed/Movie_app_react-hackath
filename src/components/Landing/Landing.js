@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import "./Landing.css";
-import Leftlanding from "./Leftlanding/Leftlanding";
 import Mainlanding from "./Mainlanding/Mainlanding";
-import Rightlanding from "./Rightlanding/Rightlanding";
 
 class Landing extends Component{
 	state = {
@@ -17,12 +15,12 @@ class Landing extends Component{
 	}
 
 	setBackground = () => {
-		// this should return a background url
+		// this should return a background url which is 
 		const copyState = {...this.state}
 		const pickedBackground = copyState.nowPlaying[copyState.counter].backdrop_path;
 		const pickedMovie = copyState.nowPlaying[copyState.counter];
 		const url = `https://image.tmdb.org/t/p/original${pickedBackground}`;
-		copyState.counter === 20 ? copyState.counter = 0 : copyState.counter++
+		copyState.counter === 19 ? copyState.counter = 0 : copyState.counter++
 	
 			this.setState({
 			...copyState,
@@ -33,20 +31,35 @@ class Landing extends Component{
 	}
 		
 	render(){
+
+		if(this.state.currentMovie === 0){
+			return(
+				<div>
+					<p>loading</p>
+				</div>
+			)}
+			else{
 		let background = this.state.currentBackgroundUrl;
+		let releasedate = this.state.currentMovie.release_date.split("-").reverse().join(".");
 		
-	return(
-	  <div style={{backgroundImage: `url(${background})`}} id="landing">
-		<Leftlanding/>
-		<Mainlanding title={this.state.currentMovie.title} 
-								 description={this.state.currentMovie.description}
-								 releasedate={this.state.currentMovie.release_date} 
-								 rating ={this.state.currentMovie.rating}/>
-		<Rightlanding/>
-	
-	  </div>
-  )
-}
+		return(
+				<div id="landing">
+				<div> 
+					Side div
+				</div>
+					<Mainlanding className="main_landing" title={this.state.currentMovie.title} 
+										description={this.state.currentMovie.description}
+										releasedate={releasedate} 
+										rating ={this.state.currentMovie.rating}
+										background ={background}
+										/>
+				<div> 
+					Side div
+				</div>						
+				</div>
+			)
+		}
+		}
 }
 
 export default Landing;
