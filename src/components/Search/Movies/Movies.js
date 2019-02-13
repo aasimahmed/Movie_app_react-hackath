@@ -3,6 +3,7 @@ import "./Movies.css";
 import Movie from "./Movie/Movie";
 
 const Movies = ({movies}) => {
+    console.log({movies})
         if({movies}.movies.length === 0){
             return(
                 <div>
@@ -11,6 +12,7 @@ const Movies = ({movies}) => {
             )
         }
         else{
+            console.log({movies});
         const movies_result = {movies}.movies.map(val => {
            
             return <Movie key={val.id}title={val.title} poster={`https://image.tmdb.org/t/p/original${val.poster_path}`}/>
