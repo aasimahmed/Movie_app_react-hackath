@@ -3,7 +3,7 @@ import "./Movies.css";
 import Movie from "./Movie/Movie";
 
 const Movies = ({movies}) => {
-    console.log({movies})
+    
         if({movies}.movies.length === 0){
             return(
                 <div>

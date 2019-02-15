@@ -47,8 +47,8 @@ class Search extends Component{
         // we are checking if the state of an element is true or false.
         // if false we return a non selected class
         // if true we return a selected class.
-        const movieButtonSelected = this.state.movieButton 
-        const tvShowsButtonSelected = !movieButtonSelected;
+        const movieButtonSelected = this.state.movieButton;
+        const tvShowsButtonSelected = this.state.tvShowsButton;
         
 
         return(
