@@ -1,6 +1,36 @@
 .movie_container{
     display:grid;
-    width:60%;
     grid-template-columns:2fr 4fr 2fr;
     text-align:center;
+    grid-template-areas: "left imagegallery right";
+    width:90%;
+    margin: 0 auto;
+}
+
+.movie_container .slider{
+    grid-area:imagegallery;
+    width: 50%;
+    height: 300px;
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    -webkit-overflow-scrolling: touch;
+    -webkit-scroll-snap-points-x: repeat(300px);
+    -ms-scroll-snap-points-x: repeat(300px);
+        scroll-snap-points-x: repeat(300px);
+-webkit-scroll-snap-type: mandatory;
+    -ms-scroll-snap-type: mandatory;
+        scroll-snap-type: mandatory;
+        scroll-behavior: smooth;
+}
+
+
+
+.movie_container .movie img{
+    height:200px;
+}
+
+.movie_container .movie{
+    width:300px;
+    flex-shrink:0;
 }

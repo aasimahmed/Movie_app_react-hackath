@@ -19,7 +19,9 @@ const Movies = ({movies}) => {
         })
         return(
             <div class="movie_container">
-            {movies_result}
+                <div className="slider">
+                    {movies_result}
+                </div>
             </div>
             )
     }

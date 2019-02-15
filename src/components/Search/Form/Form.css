@@ -5,19 +5,20 @@
     grid-template-columns: 2fr 8fr 2fr;
     grid-template-areas:"left search right";
     color:white;
+    display:block;
 }
 
 
-.form_container .form_subcontainer{
+.form_subcontainer{
     grid-area:search;
-    align-content:center;
-    justify-content:center;
     padding:20px;
+    justify-content: center;
+    display:block;
+    
 }
 
 .form_container .form_subcontainer li{
     list-style:none;
-    justify-self:center;
     display:inline-block;
     padding:20px;
     
@@ -25,4 +26,8 @@
 
 .form_container .form_subcontainer form{
     align-self: center;
+}
+
+.form_subcontainer li{
+    float:right;
 }
