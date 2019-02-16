@@ -6,7 +6,7 @@ const Form = ({handleChange, handleSubmit, searchvalue}) => {
     
     return(
     <div className="form_container">
-        <form onSubmit={handleSubmit} className="form_subcontainer">
+        <form onSubmit={handleSubmit} className="form_subcontainer" autocomplete="off">
             <li id="nowplayingbutton">Now Playing</li>
             <li id="upcomingbutton" >Upcoming</li>
             <li id="popularbutton" >Popular</li>

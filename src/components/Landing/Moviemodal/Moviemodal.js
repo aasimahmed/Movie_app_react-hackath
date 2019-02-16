@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './Moviemodal.css';
 
+
+
 class Moviemodal extends Component {
     state={
         currentMovie: ""
@@ -18,7 +20,6 @@ class Moviemodal extends Component {
         }
     
     render(){
-        console.log(this.props.match.params.id, this.state.currentMovie.id)
         
         if(!this.state.currentMovie.id){
             return(
