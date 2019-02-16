@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import { 
+	Route,
+	BrowserRouter as Router,
+} from "react-router-dom";
 import './App.css';
 import Nav from "../Nav/Nav";
 import Landing from "../Landing/Landing"
 import Search from "../Search/Search";
+import Moviemodal from "../Landing/Moviemodal/Moviemodal"
+import Cinema from "../Cinema/Cinema";
 
 const MOVIE_API_KEY = "564528300769657f872709570897bb55";
+
 
 class App extends Component{
     state = {
@@ -21,7 +28,7 @@ class App extends Component{
 
     render(){
 	
-			console.log(this.state)
+			
 			if(this.state.nowplaying.length === 0){
 				return(
 					<p> loading </p>
@@ -39,12 +46,20 @@ class App extends Component{
 				} 
 			}) 
         return(
-					<div className="app">
-						<Nav/>
-						<Landing nowPlaying={nowPlayingDetails}/>
-						<Search/>
-						}
-          </div>
+
+
+
+					<Router>
+							<div className="app">
+							<Nav/>
+							<Landing nowPlaying={nowPlayingDetails}/>
+
+							{/* <Route exact path="/" component ={}/> */}
+							<Route exact path="/cinemas" render={(props, nowPlayingDetails) => <Cinema {...props} nowPlaying={this.nowPlayingDetails}/>}/>
+							<Route exact path="/movie/:id" render={(props) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
+							<Route exact path="/search" component={Search}/>
+							</div>
+					</Router>
 						)
 					}
     }

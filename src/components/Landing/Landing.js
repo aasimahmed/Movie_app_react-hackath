@@ -5,13 +5,17 @@ import Mainlanding from "./Mainlanding/Mainlanding";
 class Landing extends Component{
 	state = {
 		nowPlaying: this.props.nowPlaying,
-		counter: 0,
-		currentBackgroundUrl: "",
-		currentMovie: 0
+		counter: 0, //checks we havent reached end of our nowPlaying list.
+		currentBackgroundUrl: "", //The current url that is on the background
+		currentMovie: 0 //The current movie we are on in the background.
 	}
 
 	componentDidMount(){
 		setInterval(this.setBackground, 5000)
+	}
+
+	componentWillUnmount(){
+		clearInterval(this.setBackground);
 	}
 
 	setBackground = () => {
@@ -28,6 +32,12 @@ class Landing extends Component{
 			currentBackgroundUrl: url,
 			currentMovie: pickedMovie
 		})
+	}
+
+	clickMovie = (e) => {
+		
+		// const currentMovie = this.state.currentMovie;
+		
 	}
 		
 	render(){
@@ -50,6 +60,8 @@ class Landing extends Component{
 										releasedate={releasedate} 
 										rating ={this.state.currentMovie.rating}
 										background ={background}
+										currentMovieId={this.state.currentMovie.id}
+										movieClick={this.clickMovie}
 										/>
 			
 				</div>

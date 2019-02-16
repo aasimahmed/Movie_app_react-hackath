@@ -1,9 +1,11 @@
 import React from "react";
 import "./Mainlanding.css";
+import { Link } from "react-router-dom";
 
-const Mainlanding = ({title, description, rating, releasedate, background}) => {
+const Mainlanding = ({title, description, rating, releasedate, background, movieClick, currentMovieId}) => {
     return(
-        <div className="mainlanding_card" style={{backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${background})`}}>
+        <Link to={`/movie/${currentMovieId}`}>
+        <div className="mainlanding_card" onClick={movieClick} style={{backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${background})`}}>
             <div>
 
             </div>
@@ -16,6 +18,7 @@ const Mainlanding = ({title, description, rating, releasedate, background}) => {
 
             </div>
         </div>
+        </Link>
 
     )
 }

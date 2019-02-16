@@ -5,6 +5,7 @@
     grid-template-areas: "left imagegallery right";
     width:90%;
     margin: 0 auto;
+    overflow:hidden;
 }
 
 .movie_container .slider{
