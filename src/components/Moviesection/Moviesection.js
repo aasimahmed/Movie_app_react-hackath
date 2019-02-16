@@ -10,7 +10,7 @@ const Moviesection = ({movies, title}) => {
         )
     }else{
     const listOfMovies = movies.map((val, idx) => {
-        return <Moviesquare image={val.poster_path} rating={val.vote_average}/>
+        return <Moviesquare key={val.id}image={val.poster_path} rating={val.vote_average}/>
     })
     return(
 

@@ -6,28 +6,43 @@
     grid-template-areas:"left search right";
     color:white;
     display:block;
-}
-
-
-.form_subcontainer{
-    grid-area:search;
-    padding:20px;
+    align-content:center;
     justify-content: center;
-    display:block;
-    
 }
+
+
 
 .form_container .form_subcontainer li{
     list-style:none;
-    display:inline-block;
     padding:20px;
+    float:right;
     
 }
 
 .form_container .form_subcontainer form{
+    justify-content: center;
     align-self: center;
+    
+}
+.form_container .form_subcontainer input{
+    justify-self: right;
+    
 }
 
-.form_subcontainer li{
-    float:right;
+.searchIcon{
+    color:pink;
+    cursor: pointer;
+}
+#inputButton{
+    
+}
+#inputbox{
+    background-color:black;
+    border:None;
+    color:white;
+    font-size: 1.2em;
+}
+#inputbox:focus{
+    background-color:none;
+    border:none;
 }

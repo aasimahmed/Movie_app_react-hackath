@@ -7,6 +7,7 @@ class Moviemodal extends Component {
     }
 
     componentDidMount(){
+        
         fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=${this.props.api}&language=en-US`)
         .then(data => data.json())
         .then(parsed => {
@@ -17,6 +18,8 @@ class Moviemodal extends Component {
         }
     
     render(){
+        console.log(this.props.match.params.id, this.state.currentMovie.id)
+        
         if(!this.state.currentMovie.id){
             return(
                 <div>
