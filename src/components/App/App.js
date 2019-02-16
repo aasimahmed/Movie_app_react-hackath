@@ -8,7 +8,8 @@ import Nav from "../Nav/Nav";
 import Landing from "../Landing/Landing"
 import Search from "../Search/Search";
 import Moviemodal from "../Landing/Moviemodal/Moviemodal"
-import Cinema from "../Cinema/Cinema";
+import Cinemapage from "../Cinemapage/Cinemapage";
+import Homepage from '../Homepage/Homepage';
 
 const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 
@@ -16,19 +17,35 @@ const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 class App extends Component{
     state = {
 			nowplaying: []
+
     }
 
     componentDidMount(){
-			fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
+			fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${MOVIE_API_KEY}&language=en-US&page=1`) //Nowplaying fetch
 			.then(nowPlayingFilms => nowPlayingFilms.json()) 
 			.then(parsedNowPlayingFilms => {
 				this.setState({nowplaying: parsedNowPlayingFilms.results})
+			})
+			fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${MOVIE_API_KEY}&language=en-US`) //Popular films fetch
+			.then(data => data.json())
+			.then(parsedPopularFilms => {
+				this.setState({popular: parsedPopularFilms.results})
+			})
+			fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
+			.then(data => data.json())
+			.then(parsedTopRatedFilms => {
+				this.setState({toprated: parsedTopRatedFilms.results})
+			})
+			fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
+			.then(data => data.json())
+			.then(parsedUpcomingFilms => {
+				this.setState({upcoming : parsedUpcomingFilms.results})
 			})
 		}
 
     render(){
 	
-			
+			console.log(this.state);
 			if(this.state.nowplaying.length === 0){
 				return(
 					<p> loading </p>
@@ -52,11 +69,11 @@ class App extends Component{
 					<Router>
 							<div className="app">
 							<Nav/>
-							<Landing nowPlaying={nowPlayingDetails}/>
+							{/* <Landing nowPlaying={nowPlayingDetails}/> */}
 
-							{/* <Route exact path="/" component ={}/> */}
-							<Route exact path="/cinemas" render={(props, nowPlayingDetails) => <Cinema {...props} nowPlaying={this.nowPlayingDetails}/>}/>
-							<Route exact path="/movie/:id" render={(props) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
+							<Route exact path="/" render={(props) => <Homepage {...props} nowPlaying={this.state.nowplaying} topRated={this.state.toprated} popular={this.state.popular} upcoming={this.state.upcoming} />} />
+							<Route exact path="/cinemas" render={(props, nowPlayingDetails) => <Cinemapage {...props} nowPlaying={this.state.nowplaying}/>} />
+							<Route exact path="/movie/:id" render={(props, api) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
 							<Route exact path="/search" component={Search}/>
 							</div>
 					</Router>

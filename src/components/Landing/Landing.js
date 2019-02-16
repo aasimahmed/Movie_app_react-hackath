@@ -42,6 +42,8 @@ class Landing extends Component{
 		
 	render(){
 
+		console.log(this.state.currentMovie)
+
 		if(this.state.currentMovie === 0){
 			return(
 				<div>
@@ -56,9 +58,9 @@ class Landing extends Component{
 				<div id="landing">
 
 					<Mainlanding className="main_landing" title={this.state.currentMovie.title} 
-										description={this.state.currentMovie.description}
+										description={this.state.currentMovie.overview}
 										releasedate={releasedate} 
-										rating ={this.state.currentMovie.rating}
+										rating ={this.state.currentMovie.vote_average}
 										background ={background}
 										currentMovieId={this.state.currentMovie.id}
 										movieClick={this.clickMovie}

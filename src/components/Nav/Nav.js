@@ -6,6 +6,9 @@ const Nav = () => {
     return(
         <header>
             <nav>
+                <div className="input">
+                <input type="text" /> <span>X</span>
+                </div>
                 <ul>
                     <li id="movies">Movies</li>
                     <li>Tv Shows</li>
