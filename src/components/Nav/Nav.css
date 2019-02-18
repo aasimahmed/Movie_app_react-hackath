@@ -35,9 +35,14 @@ header nav ul li{
 }
 header nav ul li:hover{
     background-color : #e969d8;
+    border-radius: 15px;
     transition : background 1.5s;
 }
 
 header nav ul li #movies{
     grid-area:tvshows;
     }
+header nav ul li a{
+    text-decoration: none;
+    color:inherit;
+}

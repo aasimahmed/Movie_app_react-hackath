@@ -33,9 +33,6 @@
     color:pink;
     cursor: pointer;
 }
-#inputButton{
-    
-}
 #inputbox{
     background-color:black;
     border:None;
@@ -45,4 +42,13 @@
 #inputbox:focus{
     background-color:none;
     border:none;
+}
+
+.form_container .form_subcontainer li:hover{
+    background-color : #e969d8;
+    transition : background 1.5s;
+}
+
+.form_container .form_subcontainer li:hover{
+    border-radius:15px;
 }
