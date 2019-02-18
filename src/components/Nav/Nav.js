@@ -7,8 +7,7 @@ const Nav = () => {
         <header>
             <nav>
                 <ul>
-                    <li id="movies">Movies</li>
-                    <li>Tv Shows</li>
+                    <li id="movies"><a href="#searchPane">Movies</a></li>
                     <li> <Link to="/cinemas">Cinemas </Link> </li>
                     <li><Link to="/">Home</Link></li>
                 </ul>

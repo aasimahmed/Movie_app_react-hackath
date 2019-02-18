@@ -13,7 +13,7 @@
     width: 50%;
     height: 300px;
     display: flex;
-    overflow-x: auto;
+    overflow-x: hidden;
     align-items: center;
     -webkit-overflow-scrolling: touch;
     -webkit-scroll-snap-points-x: repeat(300px);
