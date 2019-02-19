@@ -5,16 +5,20 @@ import Moviesquare from "../Moviesquare/Moviesquare";
 import {Link} from "react-router-dom";
 
 
-const Moviesection = ({movies, title}) => {
-    if(!movies){
+const Moviesection = ({movies, title, shouldShow}) => {
+    if(movies === undefined){ //If no movies return loading
         return(
             <h2>loading</h2>
         )
-    }else{
-    const listOfMovies = movies.map((val, idx) => {
+    }
+    else if(shouldShow){ // if the prop shouldShow is true, then we render 
+    return null;
+    }
+    else{
+    const listOfMovies = movies.map((val) => {
         return (
         <Link to={`movie/${val.id}`}>
-        <Moviesquare key={val.id}image={val.poster_path} rating={val.vote_average}/>
+            <Moviesquare key={val.id}image={val.poster_path} rating={val.vote_average}/>
         </Link>
         )
     })

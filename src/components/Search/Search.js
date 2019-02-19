@@ -8,7 +8,12 @@ const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 class Search extends Component{
     state={
     searchvalue:"",
-    results: []
+    results: [],
+    nowplayingbutton: this.props.nowplayingbutton,
+    topratedbutton: this.props.topratedbutton,
+    upcomingbutton: this.props.upcomingbutton,
+    popularbutton: this.props.popularbutton
+
     }
 
     handleSubmit = (e) => {
@@ -37,7 +42,11 @@ class Search extends Component{
         this.handleSubmit(value)
     }
 
+    formButtonClicker = (e) => {
+        const val = e.target.id;
+        this.props.formButtonState(val);
 
+    }
 
     render(){
 
@@ -52,6 +61,11 @@ class Search extends Component{
                 <Form searchvalue ={this.state.searchvalue} 
                       handleSubmit={this.handleSubmit} 
                       handleChange={this.handleChange}
+                      formButtonClicker={this.formButtonClicker}
+                      upcomingbutton={this.state.upcomingbutton}
+                      topratedbutton ={this.state.topratedbutton}
+                      nowplayingbutton={this.state.nowplayingbutton}
+                      popularbutton={this.state.popularbutton}
                       className="search"/>
                       
                 <Movies movies={this.state.results}/>

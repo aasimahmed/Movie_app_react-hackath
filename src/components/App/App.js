@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Nav from "../Nav/Nav";
-import Landing from "../Landing/Landing"
 import Search from "../Search/Search";
 import Moviemodal from "../Landing/Moviemodal/Moviemodal"
 import Cinemapage from "../Cinemapage/Cinemapage";
@@ -16,7 +15,16 @@ const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 
 class App extends Component{
     state = {
-			nowplaying: []
+			nowplaying: [],
+			popular: [],
+			toprated : [],
+			upcoming: [],
+    	formButtons : {
+        upcomingbutton: true,
+        nowplayingbutton: true,
+        popularbutton : true,
+        topratedbutton : true
+    }
 
     }
 
@@ -43,25 +51,23 @@ class App extends Component{
 			})
 		}
 
+		formButtonState = (val) => {
+			    this.setState((prevState => {
+          return{
+              ...prevState,
+              formButtons : {...prevState.formButtons, [val] : !prevState.formButtons[val] }
+              }
+             }
+         ))
+		}
     render(){
 	
 			console.log(this.state);
 			if(this.state.nowplaying.length === 0){
-				return(
+				return( //This is where the spinner would go.
 					<p> loading </p>
 				)
 			}else{
-			
-			const nowPlayingDetails = this.state.nowplaying.map((val, idx) => {
-				return {
-				id: val.id,
-				title : val.original_title,
-				backdrop_path : val.backdrop_path,
-				description: val.overview,
-				release_date : val.release_date,
-				rating: val.vote_average
-				} 
-			}) 
         return(
 
 
@@ -71,7 +77,17 @@ class App extends Component{
 							<Nav/>
 							{/* <Landing nowPlaying={nowPlayingDetails}/> */}
 
-							<Route exact path="/" render={(props) => <Homepage {...props} nowPlaying={this.state.nowplaying} topRated={this.state.toprated} popular={this.state.popular} upcoming={this.state.upcoming} />} />
+							<Route exact path="/" render={(props) => <Homepage {...props} 
+							nowplaying={this.state.nowplaying} //The movies rendered in landing page
+							toprated = {this.state.toprated}
+							upcoming = {this.state.upcoming}
+							popular = {this.state.popular}
+							nowplayingbutton={this.state.formButtons.nowplayingbutton} //all of the buttons controlled by the form - state is controlled in app, conditionally rendered in search.
+							topratedbutton={this.state.formButtons.topratedbutton} 
+							popularbutton={this.state.formButtons.popularbutton} 
+							upcomingbutton={this.state.formButtons.upcomingbutton} 
+							formButtonState={this.formButtonState}
+							/>} />
 							<Route exact path="/cinemas" render={(props, nowPlayingDetails) => <Cinemapage {...props} nowPlaying={this.state.nowplaying}/>} />
 							<Route exact path="/movie/:id" render={(props, api) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
 							<Route exact path="/search" component={Search}/>

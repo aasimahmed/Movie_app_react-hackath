@@ -45,8 +45,8 @@
 }
 
 .form_container .form_subcontainer li:hover{
-    background-color : #e969d8;
     transition : background 1.5s;
+    cursor: pointer;
 }
 
 .form_container .form_subcontainer li:hover{

@@ -2,15 +2,15 @@ import React from "react";
 import "./Form.css";
 
 
-const Form = ({handleChange, handleSubmit, searchvalue}) => {
+const Form = ({handleChange, handleSubmit, searchvalue, formButtonClicker, nowplayingbutton, upcomingbutton, popularbutton, topratedbutton}) => {
     
     return(
     <div className="form_container">
         <form onSubmit={handleSubmit} className="form_subcontainer" autocomplete="off">
-            <li id="nowplayingbutton">Now Playing</li>
-            <li id="upcomingbutton" >Upcoming</li>
-            <li id="popularbutton" >Popular</li>
-            <li id="topratedbuton" >Top Rated</li>
+            <li onClick={formButtonClicker} style={{backgroundColor: (nowplayingbutton ? "#e969d8" : "white")}} id="nowplayingbutton">Now Playing</li>
+            <li onClick={formButtonClicker} style={{backgroundColor: (upcomingbutton ? "#e969d8" : "white")}}id="upcomingbutton" >Upcoming</li>
+            <li onClick={formButtonClicker} style={{backgroundColor: (popularbutton ? "#e969d8" : "white")}}id="popularbutton" >Popular</li>
+            <li onClick={formButtonClicker} style={{backgroundColor: (topratedbutton ? "#e969d8" : "white")}}id="topratedbutton" >Top Rated</li>
             
             <li id="inputButton">             
                 <input id="inputbox" type="text" placeholder="Search ..." value={searchvalue} 

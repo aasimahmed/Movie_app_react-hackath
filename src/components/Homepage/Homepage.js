@@ -5,16 +5,16 @@ import Moviesection from "../Moviesection/Moviesection";
 import Search from "../Search/Search";
 
 
-const Homepage = ({upcoming, topRated, popular, nowPlaying}) => {
-    console.log(upcoming, topRated, popular, nowPlaying)
+const Homepage = ({upcoming, toprated, popular, nowplaying, formButtonState, upcomingbutton, topratedbutton, popularbutton, nowplayingbutton}) => {
+    
     return(
         <React.Fragment>
-            <Landing nowPlaying={nowPlaying}/>
-            <Search/>
-            <Moviesection movies={nowPlaying} title={"Now playing"}/>
-            <Moviesection movies={topRated} title={"Top Rated"}/>
-            <Moviesection movies={popular} title={"Popular"}/>
-            <Moviesection movies={upcoming} title={"Upcoming"}/>
+            <Landing nowPlaying={nowplaying}/>
+            <Search formButtonState={formButtonState} upcomingbutton={upcomingbutton} topratedbutton={topratedbutton} popularbutton={popularbutton} nowplayingbutton={nowplayingbutton}/>
+            <Moviesection movies={nowplaying} shouldShow={nowplayingbutton} title={"Now playing"}/>
+            <Moviesection movies={toprated} shouldShow={topratedbutton} title={"Top Rated"}/>
+            <Moviesection movies={popular} shouldShow={popularbutton}title={"Popular"}/>
+            <Moviesection movies={upcoming} shouldShow={upcomingbutton} title={"Upcoming"}/>
         </React.Fragment>
     )
 }
