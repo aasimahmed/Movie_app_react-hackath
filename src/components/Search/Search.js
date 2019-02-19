@@ -8,11 +8,7 @@ const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 class Search extends Component{
     state={
     searchvalue:"",
-    results: [],
-    nowplayingbutton: this.props.nowplayingbutton,
-    topratedbutton: this.props.topratedbutton,
-    upcomingbutton: this.props.upcomingbutton,
-    popularbutton: this.props.popularbutton
+    results: []
 
     }
 
@@ -22,11 +18,7 @@ class Search extends Component{
     }
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&query=${this.state.searchvalue}&language=en-US&page=1&include_adult=true`)
     .then(data => data.json())
-    .then(parsedData => this.setState((prevState) => {
-        return {
-            ...prevState, results: parsedData.results
-        }
-    }))
+    .then(parsedData => this.setState({results: parsedData.results}))
     .catch(err => {
         if(err){
             console.log(err);
@@ -36,10 +28,16 @@ class Search extends Component{
 
     handleChange = (e) => {
         
-        const value = document.getElementById("inputbox").value;
+        const val = document.getElementById("inputbox").value;
+        console.log(val)
         // const value = e.target.value;
-        this.setState({searchvalue: value})
-        this.handleSubmit(value)
+        this.setState(prevState => {
+             return {
+                 ...prevState, searchvalue: val
+            }
+                 
+        })
+        this.handleSubmit(val);
     }
 
     formButtonClicker = (e) => {
@@ -62,10 +60,10 @@ class Search extends Component{
                       handleSubmit={this.handleSubmit} 
                       handleChange={this.handleChange}
                       formButtonClicker={this.formButtonClicker}
-                      upcomingbutton={this.state.upcomingbutton}
-                      topratedbutton ={this.state.topratedbutton}
-                      nowplayingbutton={this.state.nowplayingbutton}
-                      popularbutton={this.state.popularbutton}
+                      upcomingbutton={this.props.upcomingbutton}
+                      topratedbutton ={this.props.topratedbutton}
+                      nowplayingbutton={this.props.nowplayingbutton}
+                      popularbutton={this.props.popularbutton}
                       className="search"/>
                       
                 <Movies movies={this.state.results}/>

@@ -6,6 +6,7 @@
     width:90%;
     margin: 0 auto;
     overflow:hidden;
+    margin-top:100px;
 }
 
 .movie_container .slider{
@@ -14,6 +15,7 @@
     height: 300px;
     display: flex;
     overflow-x: hidden;
+    overflow-y:hidden;
     align-items: center;
     -webkit-overflow-scrolling: touch;
     -webkit-scroll-snap-points-x: repeat(300px);
@@ -22,9 +24,7 @@
 -webkit-scroll-snap-type: mandatory;
     -ms-scroll-snap-type: mandatory;
         scroll-snap-type: mandatory;
-        scroll-behavior: smooth;
 }
-
 
 
 .movie_container .movie img{

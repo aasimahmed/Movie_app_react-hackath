@@ -1,0 +1,11 @@
+.loading:empty{
+    background:url("https://cdn-images-1.medium.com/max/1600/0*3IFEy-hfoIpgFjBl.gif");
+    background-size: 100%;
+    opacity: 0.5;
+}
+
+
+.app .loading{
+    margin: 0 auto;
+    opacity: 0.5;
+}

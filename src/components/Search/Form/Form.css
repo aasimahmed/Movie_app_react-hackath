@@ -20,17 +20,16 @@
 }
 
 .form_container .form_subcontainer form{
-    justify-content: center;
-    align-self: center;
+
     
 }
 .form_container .form_subcontainer input{
-    justify-self: right;
+    border-radius: 20px;
     
 }
 
 .searchIcon{
-    color:pink;
+    padding-left: 10px;
     cursor: pointer;
 }
 #inputbox{
@@ -47,8 +46,4 @@
 .form_container .form_subcontainer li:hover{
     transition : background 1.5s;
     cursor: pointer;
-}
-
-.form_container .form_subcontainer li:hover{
-    border-radius:15px;
 }

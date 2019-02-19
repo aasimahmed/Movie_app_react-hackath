@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 const Movies = ({movies}) => {
         if(movies == undefined){
             return(
-                <div>
-                
-                </div>
+                <p>Search</p>
             )
         }
         else{

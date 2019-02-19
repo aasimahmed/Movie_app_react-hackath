@@ -11,7 +11,7 @@ const Moviesection = ({movies, title, shouldShow}) => {
             <h2>loading</h2>
         )
     }
-    else if(shouldShow){ // if the prop shouldShow is true, then we render 
+    else if(!shouldShow){ // if the prop shouldShow is true, then we render 
     return null;
     }
     else{

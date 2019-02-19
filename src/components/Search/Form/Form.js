@@ -6,11 +6,11 @@ const Form = ({handleChange, handleSubmit, searchvalue, formButtonClicker, nowpl
     
     return(
     <div className="form_container">
-        <form onSubmit={handleSubmit} className="form_subcontainer" autocomplete="off">
-            <li onClick={formButtonClicker} style={{backgroundColor: (nowplayingbutton ? "#e969d8" : "white")}} id="nowplayingbutton">Now Playing</li>
-            <li onClick={formButtonClicker} style={{backgroundColor: (upcomingbutton ? "#e969d8" : "white")}}id="upcomingbutton" >Upcoming</li>
-            <li onClick={formButtonClicker} style={{backgroundColor: (popularbutton ? "#e969d8" : "white")}}id="popularbutton" >Popular</li>
-            <li onClick={formButtonClicker} style={{backgroundColor: (topratedbutton ? "#e969d8" : "white")}}id="topratedbutton" >Top Rated</li>
+        <form onSubmit={handleSubmit} className="form_subcontainer" autoComplete="off">
+            <li onClick={formButtonClicker} style={{backgroundColor: (nowplayingbutton ? "#0eb291" : "black")}} id="nowplayingbutton">Now Playing</li>
+            <li onClick={formButtonClicker} style={{backgroundColor: (upcomingbutton ? "#0eb291" : "black")}}id="upcomingbutton" >Upcoming</li>
+            <li onClick={formButtonClicker} style={{backgroundColor: (popularbutton ? "#0eb291" : "black")}}id="popularbutton" >Popular</li>
+            <li onClick={formButtonClicker} style={{backgroundColor: (topratedbutton ? "#0eb291" : "black")}}id="topratedbutton" >Top Rated</li>
             
             <li id="inputButton">             
                 <input id="inputbox" type="text" placeholder="Search ..." value={searchvalue} 
@@ -18,10 +18,8 @@ const Form = ({handleChange, handleSubmit, searchvalue, formButtonClicker, nowpl
                 onKeyDown = {(e) => {
                     if(e.which === 13){
                         handleSubmit(e)
-                    }else{
-                        return;
-                    }
-                    }}/>
+                
+                    }}}/>
                      <i onClick={handleSubmit}className="fas fa-search fa-2x searchIcon"></i>
             </li>
             

@@ -9,12 +9,14 @@ import Search from "../Search/Search";
 import Moviemodal from "../Landing/Moviemodal/Moviemodal"
 import Cinemapage from "../Cinemapage/Cinemapage";
 import Homepage from '../Homepage/Homepage';
+import Loading from "../Loading/Loading";
 
 const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 
 
 class App extends Component{
     state = {
+			loading: true,
 			nowplaying: [],
 			popular: [],
 			toprated : [],
@@ -33,21 +35,22 @@ class App extends Component{
 			.then(nowPlayingFilms => nowPlayingFilms.json()) 
 			.then(parsedNowPlayingFilms => {
 				this.setState({nowplaying: parsedNowPlayingFilms.results})
+				return fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${MOVIE_API_KEY}&language=en-US`)
 			})
-			fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${MOVIE_API_KEY}&language=en-US`) //Popular films fetch
 			.then(data => data.json())
 			.then(parsedPopularFilms => {
 				this.setState({popular: parsedPopularFilms.results})
+				return fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
 			})
-			fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
 			.then(data => data.json())
 			.then(parsedTopRatedFilms => {
 				this.setState({toprated: parsedTopRatedFilms.results})
+				return fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
 			})
-			fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
 			.then(data => data.json())
 			.then(parsedUpcomingFilms => {
 				this.setState({upcoming : parsedUpcomingFilms.results})
+				setTimeout(() => this.setState({loading: false}), 5000)
 			})
 		}
 
@@ -61,21 +64,21 @@ class App extends Component{
          ))
 		}
     render(){
-	
-			console.log(this.state);
-			if(this.state.nowplaying.length === 0){
-				return( //This is where the spinner would go.
-					<p> loading </p>
+			const {loading} = this.state;
+			if(loading){
+				
+				return (
+					<div className="loading">
+						<Loading image={"https://cdn-images-1.medium.com/max/1600/0*3IFEy-hfoIpgFjBl.gif"} />
+					</div>
 				)
-			}else{
-        return(
+			}
 
-
-
+			return(
+				
 					<Router>
-							<div className="app">
+							<div className="app" >
 							<Nav/>
-							{/* <Landing nowPlaying={nowPlayingDetails}/> */}
 
 							<Route exact path="/" render={(props) => <Homepage {...props} 
 							nowplaying={this.state.nowplaying} //The movies rendered in landing page
@@ -94,8 +97,8 @@ class App extends Component{
 							</div>
 					</Router>
 						)
-					}
-    }
-}
+					}}
+  
+
 
 export default App;

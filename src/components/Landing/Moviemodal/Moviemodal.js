@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Moviemodal.css';
+import Loading from "../../Loading/Loading"
 
 
 
@@ -23,8 +24,8 @@ class Moviemodal extends Component {
         
         if(!this.state.currentMovie.id){
             return(
-                <div>
-                    <h2>loading</h2>
+                <div className="loading">
+                <Loading image={"https://cdn-images-1.medium.com/max/1600/0*3IFEy-hfoIpgFjBl.gif"} />
                 </div>
             )
         }

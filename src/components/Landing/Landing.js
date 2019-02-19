@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "./Landing.css";
 import Mainlanding from "./Mainlanding/Mainlanding";
+import Loading from "../Loading/Loading";
 
 class Landing extends Component{
 	state = {
@@ -34,21 +35,13 @@ class Landing extends Component{
 		})
 	}
 
-	clickMovie = (e) => {
-		
-		// const currentMovie = this.state.currentMovie;
-		
-	}
 		
 	render(){
 
-		console.log(this.state.currentMovie)
 
 		if(this.state.currentMovie === 0){
 			return(
-				<div>
-					<p>loading</p>
-				</div>
+				<Loading image={"https://cdn-images-1.medium.com/max/1600/0*3IFEy-hfoIpgFjBl.gif"} />
 			)}
 			else{
 		let background = this.state.currentBackgroundUrl;
