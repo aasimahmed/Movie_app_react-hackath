@@ -12,6 +12,9 @@ class Search extends Component{
 
     }
 
+    componentWillUnmount(){
+        
+    }
     handleSubmit = (e) => {
     if(e.preventDefault){ //If its a for submission prevent the browser from rendering.
         e.preventDefault();
