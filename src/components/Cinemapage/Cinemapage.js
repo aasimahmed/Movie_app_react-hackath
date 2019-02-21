@@ -5,110 +5,35 @@ import "./Cinemapage.css"
 class Cinemapage extends Component {
 
     state={
-        location: {
-            ipapi: {},
-            googleapi: {}
+        location: this.props.location,
+        nowplaying : this.props.nowplaying,
+        localCinemas: {},
 
-            // "query": "24.48.0.1",
-            // "status": "success",
-            // "country": "Canada",
-            // "countryCode": "CA",
-            // "region": "QC",
-            // "regionName": "Quebec",
-            // "city": "Québec",
-            // "zip": "G1X",
-            // "lat": 46.7749,
-            // "lon": -71.3344,
-            // "timezone": "America/Toronto",
-            // "isp": "Le Groupe Videotron Ltee",
-            // "org": "Videotron Ltee",
-            // "as": "AS5769 Videotron Telecom Ltee"
-        },
-        localCinemas : {
-
-        },
-        nowPlaying : [...this.props.nowPlaying]
 }
 
     componentDidMount(){
-        // fetch for location using googleapi 
-        // if exists fetch forlocal cinemas off the location
-        //  Google geolocation api for most users, else IPFETCH 
-        if ("geolocation" in navigator){ //If geolocation is available ask for it, get it then reverse for address, set this all as googlelocation
-            navigator.geolocation.getCurrentPosition(
-            (data) => {
-                const {coords} = data
-                this.setState({location: {
-                    latitude : coords.latitude,
-                    longitude: coords.longitude
-                }})
-            const GOOGLE_REVERSEGEO_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.latitude},${coords.longitude}&key=AIzaSyC6yLpCQqiV0CDCHAuuGOfUTcDWNHvPhn4`
-                fetch(GOOGLE_REVERSEGEO_URL)
-                .then(data => data.json())
-                .then(parsedData => {
-                    this.setState((prevState) => {
-                        return {
-                            location: {
-                                ...prevState.location,
-                                googleapi: 
-                                    parsedData
-                                
-                            }
-                        }
-                    })} 
-                        
-                    
-            )})
-            
-            }
-        
-            fetch("http://ip-api.com/json/") //This gives much more info
-            .then(data => data.json())
-           .then(parsedData => {
-               console.log(parsedData)
-           this.setState((prevState) => {
-           return{
-            location: {...prevState.location},
-            ipapi :  
-            parsedData
-           }    
-           }
-          )})
+         fetch(`api.cinelist.co.uk/search/cinemas/postcode/${this.props.location.zip}`)
+         .then(data => console.log(data)) //TODO - THIS DATA NEEDS TO BE DEALT WITH
 
-          console.log(this.state);
-        }
-    
-//         fetch("") //uses current ip
-//         data response: {
-//             "query": "24.48.0.1",
-//             "status": "success",
-//             "country": "Canada",
-//             "countryCode": "CA",
-//             "region": "QC",
-//             "regionName": "Quebec",
-//             "city": "Québec",
-//             "zip": "G1X",
-//             "lat": 46.7749,
-//             "lon": -71.3344,
-//             "timezone": "America/Toronto",
-//             "isp": "Le Groupe Videotron Ltee",
-//             "org": "Videotron Ltee",
-//             "as": "AS5769 Videotron Telecom Ltee"
-//           }
-// }
+    }
+
     
     render(){
+        
 
         return(
-            <div className="cinemapage">
-                <h3> Showtime </h3>
+            <div className="cinemapage" >
+                <h3>Showtime </h3>
                 <input type="text" placeholder="Enter your postcode"/>
+                <p>curently showing all cinemas near:</p>
+                
             </div>  
         )
 
     } 
 
 }
+
 
 
 //COMPONENTS

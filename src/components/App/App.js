@@ -25,12 +25,20 @@ class App extends Component{
         upcomingbutton: true,
         nowplayingbutton: true,
         popularbutton : true,
-        topratedbutton : true
+		topratedbutton : true,
+		location: {}
     }
 
     }
+	
+	
 
     componentDidMount(){
+
+			
+			
+
+		
 			fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${MOVIE_API_KEY}&language=en-US&page=1`) //Nowplaying fetch
 			.then(nowPlayingFilms => nowPlayingFilms.json()) 
 			.then(parsedNowPlayingFilms => {
@@ -50,8 +58,19 @@ class App extends Component{
 			.then(data => data.json())
 			.then(parsedUpcomingFilms => {
 				this.setState({upcoming : parsedUpcomingFilms.results})
-				setTimeout(() => this.setState({loading: false}), 5000)
+				return fetch("http://ip-api.com/json/") //This gives much more info
 			})
+			.then(data => data.json())
+			.then(parsedData => {
+			this.setState({ 
+				location: parsedData
+			})
+			})
+				setTimeout(() => this.setState({loading: false}), 5000)
+			 
+
+				
+			
 		}
 
 		formButtonState = (val) => {
@@ -91,7 +110,7 @@ class App extends Component{
 							upcomingbutton={this.state.formButtons.upcomingbutton} 
 							formButtonState={this.formButtonState}
 							/>} />
-							<Route exact path="/cinemas" render={(props, nowPlayingDetails) => <Cinemapage {...props} nowPlaying={this.state.nowplaying}/>} />
+							<Route exact path="/cinemas" render={(props, nowplaying, location) => <Cinemapage {...props} location={this.state.location} nowplaying={this.state.nowplaying}/>} />
 							<Route exact path="/movie/:id" render={(props, api) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
 							<Route exact path="/search" component={Search}/>
 							</div>

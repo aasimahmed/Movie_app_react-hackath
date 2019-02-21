@@ -17,7 +17,7 @@ const Moviesection = ({movies, title, shouldShow}) => {
     else{
     const listOfMovies = movies.map((val) => {
         return (
-        <Link to={`movie/${val.id}`}>
+        <Link key ={val.id} to={`movie/${val.id}`}>
             <Moviesquare key={val.id}image={val.poster_path} rating={val.vote_average}/>
         </Link>
         )

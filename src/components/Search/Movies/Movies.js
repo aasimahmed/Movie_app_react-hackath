@@ -17,7 +17,7 @@ const Movies = ({movies}) => {
             </Link>)
         })
         return(
-            <div class="movie_container">
+            <div className="movie_container">
                 <div className="slider">
                     {movies_result}
                 </div>

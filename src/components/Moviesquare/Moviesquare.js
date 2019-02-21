@@ -5,7 +5,7 @@ import "../Search/Movies/Movies.css";
 
 const Moviesquare = ({image}) => {
     return(
-        <div class="movie">
+        <div className="movie">
             <img src={`https://image.tmdb.org/t/p/original${image}`} alt="pic" height="100px" width="100px"/>
         </div>
     )
