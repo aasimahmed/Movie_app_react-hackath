@@ -1,3 +1,60 @@
-.moviemodal h2{
-text-align: center;
+.individual_movie_page{
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size:100%;
+    display:grid;
+    grid-template-columns: 30% 50% 20%;
+    grid-template-areas: "left center right";
+    
+}
+
+.individual_movie_page img:hover{
+ transform: scale(1.04);
+ transition:transform 0.4s;
+
+}
+
+.individual_movie_page .productionCompanies{
+    grid-area:right;
+}
+
+.productionCompanies h3:hover{
+    color:black;
+}
+.productionCompanies{
+    justify-self: right;
+}
+
+.individual_movie_page_pane{
+    border-radius:50%;
+    background: linear-gradient(rgb(99, 54, 110), rgb(155, 186, 226));
+    border:1px solid black;
+    opacity:0.5;
+    height:65vh;
+    text-decoration: none;
+    font-size:0.8rem;
+    display:grid;
+}
+
+.individual_movie_page_pane:hover{
+opacity:0.8;
+transition:opacity 1s;
+}
+
+.individual_movie_page_pane a img{
+    border-radius: 50%;
+    display:block;
+}
+
+.individual_movie_page_pane a{
+    margin: 0 auto;
+}
+
+.individual_movie_page_pane h2{
+    margin: 0 auto;
+}
+.individual_movie_page_pane p{
+    margin: 0 auto;
+    border-radius:50%
+    
 }
