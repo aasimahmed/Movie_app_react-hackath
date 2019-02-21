@@ -21,57 +21,41 @@ class App extends Component{
 			popular: [],
 			toprated : [],
 			upcoming: [],
-    	formButtons : {
-        upcomingbutton: true,
-        nowplayingbutton: true,
-        popularbutton : true,
-		topratedbutton : true,
-		location: {}
+    		formButtons : {
+        		upcomingbutton: true,
+        		nowplayingbutton: true,
+        		popularbutton : true,
+				topratedbutton : true,
+			},
+			location: {}
     }
 
-    }
+    
 	
-	
 
-    componentDidMount(){
-
-			
-			
-
-		
-			fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${MOVIE_API_KEY}&language=en-US&page=1`) //Nowplaying fetch
-			.then(nowPlayingFilms => nowPlayingFilms.json()) 
-			.then(parsedNowPlayingFilms => {
-				this.setState({nowplaying: parsedNowPlayingFilms.results})
-				return fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${MOVIE_API_KEY}&language=en-US`)
-			})
-			.then(data => data.json())
-			.then(parsedPopularFilms => {
-				this.setState({popular: parsedPopularFilms.results})
-				return fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
-			})
-			.then(data => data.json())
-			.then(parsedTopRatedFilms => {
-				this.setState({toprated: parsedTopRatedFilms.results})
-				return fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
-			})
-			.then(data => data.json())
-			.then(parsedUpcomingFilms => {
-				this.setState({upcoming : parsedUpcomingFilms.results})
-				return fetch("http://ip-api.com/json/") //This gives much more info
-			})
-			.then(data => data.json())
-			.then(parsedData => {
-			this.setState({ 
-				location: parsedData
-			})
-			})
-				setTimeout(() => this.setState({loading: false}), 5000)
-			 
+     async componentDidMount(){
+		  
+			const nowplaying = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
+			const parsedNowplayingFilms = await nowplaying.json();
+			const popular = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${MOVIE_API_KEY}&language=en-US`)
+			const parsedPopularFilms = await popular.json();
+			const upcoming = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${MOVIE_API_KEY}&language=en-US&page=1`)
+			const parsedUpcomingFilms = await upcoming.json();
+			const toprated = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${MOVIE_API_KEY}&language=en-US&page=1`);
+			const parsedTopratedFilms= await toprated.json();
+			const location = await fetch("http://ip-api.com/json/");
+			const parsedLocation = await location.json();
+			setTimeout(() => this.setState({
+				loading: false,
+				nowplaying: parsedNowplayingFilms.results,
+				popular : parsedPopularFilms.results,
+				toprated: parsedTopratedFilms.results,
+				upcoming: parsedUpcomingFilms.results,
+				location : {...parsedLocation}
+			}), 5000)
 
 				
-			
-		}
+	}
 
 		formButtonState = (val) => {
 			    this.setState((prevState => {
@@ -92,6 +76,7 @@ class App extends Component{
 					</div>
 				)
 			}
+			console.log(this.state.nowplaying, this.state)
 
 			return(
 				

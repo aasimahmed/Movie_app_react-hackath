@@ -12,6 +12,7 @@ class Cinemapage extends Component {
 }
 
     componentDidMount(){
+        console.log(this.props.location.zip)
          fetch(`api.cinelist.co.uk/search/cinemas/postcode/${this.props.location.zip}`)
          .then(data => console.log(data)) //TODO - THIS DATA NEEDS TO BE DEALT WITH
 
