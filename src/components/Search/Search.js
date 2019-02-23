@@ -8,20 +8,23 @@ const MOVIE_API_KEY = "564528300769657f872709570897bb55";
 class Search extends Component{
     state={
     searchvalue:"",
-    results: []
-
+    results: [],
+    loaded: false
     }
 
     componentWillUnmount(){
         
     }
-    handleSubmit = (e) => {
+     handleSubmit = (e) => {
     if(e.preventDefault){ //If its a for submission prevent the browser from rendering.
         e.preventDefault();
     }
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&query=${this.state.searchvalue}&language=en-US&page=1&include_adult=true`)
     .then(data => data.json())
-    .then(parsedData => this.setState({results: parsedData.results}))
+    .then(parsedData => this.setState(
+        {results: parsedData.results,
+        loaded: true}
+        ))
     .catch(err => {
         if(err){
             console.log(err);

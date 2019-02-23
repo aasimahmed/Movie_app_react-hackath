@@ -11,6 +11,7 @@ grid-template-areas: "logo main nav";
 background-color:black;
 margin: 0 auto;
 color:white;
+width: 80%;
 }
 
 header nav .input{
@@ -45,4 +46,13 @@ header nav ul li #movies{
 header nav ul li a{
     text-decoration: none;
     color:inherit;
+}
+
+header nav >a:hover {
+    color:white;
+    
+}
+
+header nav >a{
+    margin: 0 auto;
 }

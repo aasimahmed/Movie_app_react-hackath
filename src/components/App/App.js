@@ -22,10 +22,10 @@ class App extends Component{
 			toprated : [],
 			upcoming: [],
     		formButtons : {
-        		upcomingbutton: true,
-        		nowplayingbutton: true,
-        		popularbutton : true,
-				topratedbutton : true,
+        		upcomingbutton: false,
+        		nowplayingbutton: false,
+        		popularbutton : false,
+				topratedbutton : true
 			},
 			location: {}
     }

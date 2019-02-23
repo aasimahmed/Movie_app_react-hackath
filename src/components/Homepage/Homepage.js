@@ -10,11 +10,13 @@ const Homepage = ({loading, upcoming, toprated, popular, nowplaying, formButtonS
     return(
         <React.Fragment>
             <Landing loading={loading}nowPlaying={nowplaying}/>
+            <div className="home_bottom_pane">
             <Search formButtonState={formButtonState} upcomingbutton={upcomingbutton} topratedbutton={topratedbutton} popularbutton={popularbutton} nowplayingbutton={nowplayingbutton}/>
             <Moviesection movies={nowplaying} shouldShow={nowplayingbutton} title={"Now playing"}/>
             <Moviesection movies={toprated} shouldShow={topratedbutton} title={"Top Rated"}/>
             <Moviesection movies={popular} shouldShow={popularbutton}title={"Popular"}/>
             <Moviesection movies={upcoming} shouldShow={upcomingbutton} title={"Upcoming"}/>
+            </div>
         </React.Fragment>
     )
 }

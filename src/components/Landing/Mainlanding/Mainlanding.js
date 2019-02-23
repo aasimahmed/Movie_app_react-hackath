@@ -1,6 +1,7 @@
 import React from "react";
 import "./Mainlanding.css";
 import { Link } from "react-router-dom";
+import StarRatings from "react-star-ratings";
 
 const Mainlanding = ({title, description, rating, releasedate, background, movieClick, currentMovieId}) => {
     return(
@@ -10,8 +11,13 @@ const Mainlanding = ({title, description, rating, releasedate, background, movie
 
             </div>
             <div>
-              <span className="mainlanding_card_title">{title}</span><span> {releasedate} </span>
-              <p> {rating}/10 </p>
+              <h2 className="mainlanding_card_title">{title}</h2>
+              <StarRatings
+                    starRatedColor="gold"
+                    rating={rating/2}
+                    numberOfStars={5}
+                /> 
+
               <p>{description.slice(0,100) + "..."}</p>
             </div>
             <div>

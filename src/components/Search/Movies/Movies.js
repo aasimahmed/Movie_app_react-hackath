@@ -1,21 +1,28 @@
 import React from "react";
 import "./Movies.css";
 import Movie from "./Movie/Movie";
+import Loading from "../..//Loading/Loading";
 import { Link } from "react-router-dom";
 
-const Movies = ({movies}) => {
-        if(movies == undefined){
-            return(
-                <p>Search</p>
-            )
+
+const Movies = ({movies, loaded}) => {
+        if(loaded === false || movies === undefined){
+                return (
+                       <img src={`https://www.honeypot2night.com/wp-content/uploads/2018/04/ajax-loading-gif.gif`} alt="loading"/>
+                        )
         }
+        
         else{
-        const movies_result = movies.map(val => {
+            const movies_result = movies.map(val => {
            
-            return (<Link to={`/movie/${val.id}`}>
+            return (
+            <Link to={`/movie/${val.id}`}>
             <Movie key={val.id}title={val.title} poster={`https://image.tmdb.org/t/p/original${val.poster_path}`}/>
-            </Link>)
+            </Link>
+            )    
         })
+
+
         return(
             <div className="movie_container">
                 <div className="slider">

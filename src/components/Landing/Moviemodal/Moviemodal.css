@@ -3,8 +3,11 @@
     background-repeat: no-repeat;
     background-size:100%;
     display:grid;
-    grid-template-columns: 30% 50% 20%;
-    grid-template-areas: "left center right";
+    
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: "top topright"
+                         "bottom bottomleft";
     
 }
 
@@ -15,46 +18,94 @@
 }
 
 .individual_movie_page .productionCompanies{
-    grid-area:right;
+grid-area:bottom;
 }
+
 
 .productionCompanies h3:hover{
     color:black;
 }
-.productionCompanies{
-    justify-self: right;
-}
 
 .individual_movie_page_pane{
-    border-radius:50%;
-    background: linear-gradient(rgb(99, 54, 110), rgb(155, 186, 226));
+    
+    background: linear-gradient(rgb(19, 44, 82), black);
     border:1px solid black;
     opacity:0.5;
-    height:65vh;
     text-decoration: none;
     font-size:0.8rem;
+    grid-area:bottomleft;
     display:grid;
+    grid-template-columns: 15% 25% 60%;
+    grid-template-rows: 20% 55% 25%;
+    grid-template-areas: "topleft topmid topright"
+                         "midleft midmid midright"
+                         "bottommleft bottommid bottomright";
+    color: white;
+    
 }
-
 .individual_movie_page_pane:hover{
 opacity:0.8;
 transition:opacity 1s;
 }
 
-.individual_movie_page_pane a img{
-    border-radius: 50%;
-    display:block;
-}
 
-.individual_movie_page_pane a{
-    margin: 0 auto;
-}
 
-.individual_movie_page_pane h2{
-    margin: 0 auto;
-}
+
 .individual_movie_page_pane p{
     margin: 0 auto;
     border-radius:50%
+}
+#individual_movie_page_pane_stars{
+    grid-area:topmid;
+    margin-left:10%;
+}
+
+#individual_movie_page_pane_title{
+    grid-area:topleft;
+    font-size:2.5em;
+    font-weight: 700;
+}
+
+#individual_movie_page_pane_imdb{
+    grid-area:topright;
+    margin-left:10%;
+}
+#individual_movie_page_pane_imdb > div{
+    margin:0 auto;
+}
+
+#individual_movie_page_pane_imdb a{
+    margin-right: 20px;
+}
+
+#individual_movie_page_pane_poster{   
+    grid-area:midleft;
+    height:100%;
+    margin-top: 10%;
     
+}
+#individual_movie_page_pane_poster img{
+    height:130%;
+    width:100%;
+}
+
+#individual_movie_page_pane_description{
+    font-weight:600;
+    font-size:1.4em;
+    grid-area:midmid;
+    margin-left:10%;
+}
+
+#individual_movie_page_pane_productioncompanies{
+    grid-area:midright;
+    
+}
+
+.production_company{
+    float: left;
+    margin: 2%;
+}
+
+#individual_movie_page_pane_description h3{
+    color:rgb(73, 199, 73);
 }

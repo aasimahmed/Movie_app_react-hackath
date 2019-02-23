@@ -6,7 +6,7 @@
     width:90%;
     margin: 0 auto;
     overflow:hidden;
-    margin-top:100px;
+    
 }
 
 .movie_container .slider{
@@ -24,6 +24,7 @@
 -webkit-scroll-snap-type: mandatory;
     -ms-scroll-snap-type: mandatory;
         scroll-snap-type: mandatory;
+        background-color:inherit;
 }
 
 
