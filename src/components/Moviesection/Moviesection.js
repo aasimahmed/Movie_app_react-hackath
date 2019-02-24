@@ -5,7 +5,7 @@ import Moviesquare from "../Moviesquare/Moviesquare";
 import {Link} from "react-router-dom";
 
 
-const Moviesection = ({movies, title, shouldShow}) => {
+const Moviesection = ({movies, title, shouldShow, leftSlide}) => {
     if(movies === undefined){ //If no movies return loading
         return(
             <h2>loading</h2>
@@ -27,9 +27,11 @@ const Moviesection = ({movies, title, shouldShow}) => {
         <section>
             <h2>{title}</h2>
                 <div className="movie_container">
-                    <div className="slider">
-                        {listOfMovies}
-                    </div>
+                    <span onClick={leftSlide}>X</span>
+                        <div className="slider">
+                            {listOfMovies}
+                        </div>
+                    <span>X</span>
                 </div>
         </section>
         )

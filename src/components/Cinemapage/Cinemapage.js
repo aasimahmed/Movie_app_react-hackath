@@ -64,6 +64,19 @@ class Cinemapage extends Component {
                     ))
 
         }
+
+        leftSlide = () => {
+            const copynowplaying = [...this.state.nowplaying];
+            let lastElement = copynowplaying.pop();
+            copynowplaying.unshift(lastElement);
+            
+            this.setState((prevState) => {
+                return {
+                    nowplaying : copynowplaying
+                                 
+                }
+            })
+        }
     
     render(){
 
@@ -75,14 +88,14 @@ class Cinemapage extends Component {
         }
 
 
-        const nowplaying = this.props.nowplaying;
+        const nowplaying = this.state.nowplaying;
 
         
 
         return(
             <div className="cinemapage" >
                 <h3>Showtime </h3>
-                <Moviesection movies={nowplaying} title={"Pick a film"}shouldShow={true} />
+                <Moviesection movies={nowplaying} title={"Pick a film"}shouldShow={true} leftSlide={this.leftSlide} />
                 <input type="text" placeholder="Enter your postcode"/>
                 <p>curently showing all cinemas near:</p>
 
