@@ -1,5 +1,6 @@
 html{
   scroll-behavior: smooth;
+  margin:0 auto;
 }
 
 body {
@@ -12,6 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color:#000;
   color:white;
+  
 }
 
 code {

@@ -28,7 +28,7 @@ grid-area:bottom;
 
 .individual_movie_page_pane{
     
-    background: linear-gradient(rgb(19, 44, 82), black);
+    background: linear-gradient(rgb(4, 13, 27), black);
     border:1px solid black;
     opacity:0.5;
     text-decoration: none;

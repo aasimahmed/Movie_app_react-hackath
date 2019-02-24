@@ -1,32 +1,92 @@
 import React, {Component} from "react";
 import "./Cinemapage.css"
+import Loading from "../Loading/Loading";
+import Cinemapageslider from "../Cinemapageslider/Cinempageslider";
+import Moviesection from "../Moviesection/Moviesection";
 
 
 class Cinemapage extends Component {
 
     state={
-        location: this.props.location,
+        location: this.props.city,
         nowplaying : this.props.nowplaying,
-        localCinemas: {},
+        localCinemas: null,
+        filmTimes: {
+            dayOffset: 1,
+            allLocalCinemaListings : []
+        },
+        selectedFilm: {
+
+        },
+        selectedCinema: {
+
+        }
 
 }
 
-    componentDidMount(){
-        console.log(this.props.location.zip)
-         fetch(`api.cinelist.co.uk/search/cinemas/postcode/${this.props.location.zip}`)
-         .then(data => console.log(data)) //TODO - THIS DATA NEEDS TO BE DEALT WITH
-
+    async componentDidMount(){
+        console.log(this.props.location.city)
+        const locationData = await fetch(`https://api.cinelist.co.uk/search/cinemas/location/${this.props.location.city}`);
+        const parsedData = await locationData.json();
+        this.setState({
+            localCinemas : parsedData.cinemas
+        })
+        const getCinemaTimes = setInterval(() => {
+          if(this.state.localCinemas === null || this.state.filmTimes.allLocalCinemaListings.length > 0){
+              console.log("doingnothing")
+          }else{  
+          clearInterval(getCinemaTimes)
+          this.findCinemas(this.state.filmTimes.dayOffset, this.state.localCinemas)  //check if we have a stated location. If we do then search for all location films.
+          }
+        }, 2000)
+        
+    }
+    componentWillUnmount (){
+        clearInterval(this.getCinemaTimes)
     }
 
+     findCinemas = (dayoffset, cinemas) => {
+        const stringedCinemas = cinemas.map(val => {
+             return val.id
+         }).join(",");
+         
+
+         //check if we have location
+         fetch(`https://api.cinelist.co.uk/get/times/many/${stringedCinemas}?day=${this.state.dayOffset}`)
+         .then(data => data.json())
+         .then(parsedData => this.setState((prevState) =>  
+                    ({
+                        filmTimes: {
+                            ...prevState.filmTimes,
+                            allLocalCinemaListings : parsedData.results 
+                        }
+                    })
+                    ))
+
+        }
     
     render(){
+
+
+
+
+        if(this.state.filmTimes.allLocalCinemaListings.length === 0){
+            return <Loading image={`https://cdn-images-1.medium.com/max/1600/0*3IFEy-hfoIpgFjBl.gif`}/>
+        }
+
+
+        const nowplaying = this.props.nowplaying;
+
         
 
         return(
             <div className="cinemapage" >
                 <h3>Showtime </h3>
+                <Moviesection movies={nowplaying} title={"Pick a film"}shouldShow={true} />
                 <input type="text" placeholder="Enter your postcode"/>
                 <p>curently showing all cinemas near:</p>
+
+                {}
                 
             </div>  
         )

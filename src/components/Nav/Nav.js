@@ -7,7 +7,7 @@ const Nav = () => {
         <header>
             <nav>
                 
-                <a href="https://github.com/aasimahmed" target="_blank" rel="noopener noreferrer"> <i class="fab fa-github fa-7x"></i></a>
+                <a href="https://github.com/aasimahmed" target="_blank" rel="noopener noreferrer"> <i className="fab fa-github fa-7x"></i></a>
                 <ul>
                     <li id="movies"><a href="#searchPane">Movies</a></li>
                     <li> <Link to="/cinemas">Cinemas </Link> </li>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./Movies.css";
 import Movie from "./Movie/Movie";
-import Loading from "../..//Loading/Loading";
 import { Link } from "react-router-dom";
 
 

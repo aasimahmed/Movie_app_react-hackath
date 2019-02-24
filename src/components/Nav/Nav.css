@@ -49,10 +49,11 @@ header nav ul li a{
 }
 
 header nav >a:hover {
-    color:white;
+    color:purple;
     
 }
 
 header nav >a{
     margin: 0 auto;
+    color:white;
 }
