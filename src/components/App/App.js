@@ -76,7 +76,7 @@ class App extends Component{
 					</div>
 				)
 			}
-			console.log(this.state.nowplaying, this.state)
+			
 
 			return(
 				
@@ -95,7 +95,7 @@ class App extends Component{
 							upcomingbutton={this.state.formButtons.upcomingbutton} 
 							formButtonState={this.formButtonState}
 							/>} />
-							<Route exact path="/cinemas" render={(props, nowplaying, location) => <Cinemapage {...props} location={this.state.location} nowplaying={this.state.nowplaying}/>} />
+							<Route exact path="/cinemas" render={(props, nowplaying, location) => <Cinemapage {...props} location={this.state.location} nowplaying={this.state.nowplaying} api={MOVIE_API_KEY}/>} />
 							<Route exact path="/movie/:id" render={(props, api) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
 							<Route exact path="/search" component={Search}/>
 							</div>

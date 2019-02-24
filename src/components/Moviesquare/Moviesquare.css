@@ -3,3 +3,12 @@
     text-decoration: none;
     color:white;
 }
+
+.selectedmovie{
+    background-color: red;
+    
+}
+
+.movie img{
+    cursor: pointer;
+}

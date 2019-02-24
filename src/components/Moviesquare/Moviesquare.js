@@ -3,10 +3,12 @@ import "./Moviesquare.css";
 import "../Search/Movies/Movies.css";   
 
 
-const Moviesquare = ({image}) => {
+const Moviesquare = ({image, id, clickedMovie, selectedFilmId, filmtitle}) => {
+    
     return(
-        <div className="movie">
-            <img src={`https://image.tmdb.org/t/p/original${image}`} alt="pic" height="100px" width="100px"/>
+        <div className={selectedFilmId === String(id) ? "selectedmovie movie" : "movie"} >
+            <p>{filmtitle}</p>
+            <img id={id} onClick={clickedMovie} src={`https://image.tmdb.org/t/p/original${image}`} alt="pic" height="100px" width="100px"/>
         </div>
     )
 }

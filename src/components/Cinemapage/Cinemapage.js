@@ -16,10 +16,12 @@ class Cinemapage extends Component {
             allLocalCinemaListings : []
         },
         selectedFilm: {
-
+            selectedFilmId : null,
+            selectedFilmData: {}
         },
         selectedCinema: {
-
+            selectedCinemaId: 0,
+            selectedCinemaData: {}
         }
 
 }
@@ -65,19 +67,44 @@ class Cinemapage extends Component {
 
         }
 
-        leftSlide = () => {
-            const copynowplaying = [...this.state.nowplaying];
-            let lastElement = copynowplaying.pop();
-            copynowplaying.unshift(lastElement);
+        leftSlide = (e) => {
+            const move = (e.target.id === "film") ? "localCinemas" : "nowplaying"
+            const copy = [...this.state[move]];
+            let lastElement = copy.pop();
+            copy.unshift(lastElement);
             
             this.setState((prevState) => {
                 return {
-                    nowplaying : copynowplaying
+                    [move] : copy
                                  
                 }
             })
         }
-    
+
+        clickedMovie = async (e) => {
+            
+            const data = e.target.id;
+            const selectedFilm = await fetch(`https://api.themoviedb.org/3/movie/${data}?api_key=${this.props.api}&language=en-US`)
+            const parsedSelectFilm = await selectedFilm.json();
+            this.setState({
+                selectedFilm : {
+                    selectedFilmId : data,
+                    selectedFilmData : parsedSelectFilm
+                }
+            })
+        }
+
+        clickedCinema = async (e) => {
+           const data = e.target.id;
+           const selectedCinema = await fetch(`https://api.cinelist.co.uk/get/cinema/${data}`);
+           const parsedSelectCinema = await selectedCinema.json();
+           this.setState({
+               selectedCinema : {
+               selectedCinemaId : data,
+               selectedCinemaData : parsedSelectCinema
+            }
+           })
+        }
     render(){
 
 
@@ -89,17 +116,29 @@ class Cinemapage extends Component {
 
 
         const nowplaying = this.state.nowplaying;
+        console.log(this.state.localCinemas)
 
         
 
         return(
             <div className="cinemapage" >
                 <h3>Showtime </h3>
-                <Moviesection movies={nowplaying} title={"Pick a film"}shouldShow={true} leftSlide={this.leftSlide} />
-                <input type="text" placeholder="Enter your postcode"/>
+                <Moviesection movies={nowplaying} 
+                title={"Pick a film"}
+                shouldShow={true} 
+                leftSlide={this.leftSlide} 
+                links={false} 
+                clickedMovie={this.clickedMovie}
+                selectedFilmId={this.state.selectedFilm.selectedFilmId}/>
+
+                <input type="text" placeholder="Enter your postcode" />
                 <p>curently showing all cinemas near:</p>
 
-                {}
+                <Cinemapageslider cinemas={this.state.localCinemas} 
+                clickedCinema={this.clickedCinema} 
+                selectedId={this.state.selectedCinema.selectedCinemaId}
+                leftSlide={this.leftSlide}
+                />
                 
             </div>  
         )
