@@ -27,7 +27,16 @@ class App extends Component{
         		popularbutton : false,
 				topratedbutton : true
 			},
-			location: {}
+			location: {},
+			arrowState : {
+				nowplaying : false,
+				popular : false,
+				toprated : false,
+				upcoming : false
+			},
+			movies: [
+
+			]
     }
 
     
@@ -66,6 +75,40 @@ class App extends Component{
              }
          ))
 		}
+
+		leftSlide = (e) => {
+		 const target = e.target.id
+		 const targetArray = target.toLowerCase().split(" ").join("");
+		 this.setState((prevState) => {
+			 const popped = prevState[targetArray].pop();
+			 prevState[targetArray].unshift(popped);
+			 console.log(prevState);
+			 return {
+				targetArray : prevState,
+				arrowState : {
+					...prevState.arrowState,
+					[target] : !prevState.arrowState[target]
+			 }
+		 }}
+		 )
+		}
+
+
+		setArrowState = (e) => {
+			console.log("setting");
+			const target = e.target.id;
+			this.setState(prevState => {
+			return {
+				arrowState : {
+					...prevState.arrowState,
+					[target] : !prevState.arrowState[target]
+				}
+			
+			}
+		})
+	}
+
+
     render(){
 			const {loading} = this.state;
 			if(loading){
@@ -94,9 +137,13 @@ class App extends Component{
 							popularbutton={this.state.formButtons.popularbutton} 
 							upcomingbutton={this.state.formButtons.upcomingbutton} 
 							formButtonState={this.formButtonState}
+							leftSlide={this.leftSlide}
+							setArrowState={this.setArrowState}
+							arrowState={this.state.arrowState}
 							/>} />
+
 							<Route exact path="/cinemas" render={(props, nowplaying, location) => <Cinemapage {...props} location={this.state.location} nowplaying={this.state.nowplaying} api={MOVIE_API_KEY}/>} />
-							<Route exact path="/movie/:id" render={(props, api) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
+							<Route exact path="/movie/:id" render={(props) => <Moviemodal {...props} api={MOVIE_API_KEY} /> } />
 							<Route exact path="/search" component={Search}/>
 							</div>
 					</Router>

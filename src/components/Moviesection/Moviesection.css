@@ -1,3 +1,30 @@
 section{
     text-align:center;
+
+}
+
+section i {
+    padding: 10px;
+}
+
+
+.arrowAnimated{
+    cursor:pointer;
+}
+
+.arrowAnimated:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: transform 1s;
+    color:purple;
+    transition: color 2s;
+}
+
+
+.arrowUnanimated:hover{
+    cursor:pointer;
+    transform: scale(1.2);
+    transition: transform 1s;
+    color:purple;
+    transition: color 2s;
 }

@@ -11,6 +11,8 @@
     
 }
 
+
+
 .individual_movie_page img:hover{
  transform: scale(1.04);
  transition:transform 0.4s;
@@ -28,7 +30,7 @@ grid-area:bottom;
 
 .individual_movie_page_pane{
     
-    background: linear-gradient(rgb(4, 13, 27), black);
+    background: linear-gradient(rgb(50, 6, 87), black);
     border:1px solid black;
     opacity:0.5;
     text-decoration: none;
@@ -36,13 +38,15 @@ grid-area:bottom;
     grid-area:bottomleft;
     display:grid;
     grid-template-columns: 15% 25% 60%;
-    grid-template-rows: 20% 55% 25%;
+    grid-template-rows: 30% 50% 25%;
     grid-template-areas: "topleft topmid topright"
                          "midleft midmid midright"
                          "bottommleft bottommid bottomright";
     color: white;
-    
+
 }
+
+
 .individual_movie_page_pane:hover{
 opacity:0.8;
 transition:opacity 1s;
@@ -64,11 +68,11 @@ transition:opacity 1s;
     grid-area:topleft;
     font-size:2.5em;
     font-weight: 700;
+    font-family:'Srisakdi', cursive;
 }
 
 #individual_movie_page_pane_imdb{
     grid-area:topright;
-    margin-left:10%;
 }
 #individual_movie_page_pane_imdb > div{
     margin:0 auto;
@@ -97,15 +101,20 @@ transition:opacity 1s;
 }
 
 #individual_movie_page_pane_productioncompanies{
-    grid-area:midright;
+    grid-area:topright;
     
 }
 
 .production_company{
-    float: left;
+    float: right;
     margin: 2%;
 }
 
 #individual_movie_page_pane_description h3{
     color:rgb(73, 199, 73);
 }
+
+#individual_movie_page_pane_movies{
+    grid-area:midright;
+    float:right;
+    }

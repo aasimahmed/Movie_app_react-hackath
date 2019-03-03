@@ -3,23 +3,26 @@ import './Moviemodal.css';
 import Loading from "../../Loading/Loading"
 import StarRatings from 'react-star-ratings';
 
-
 class Moviemodal extends Component {
     state={
-        currentMovie: ""
+        currentMovie: "",
+        trailers : []
     }
 
     async componentDidMount(){
         
         const currentMovie = await fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=${this.props.api}&language=en-US`)
         const currentMovieParsed = await currentMovie.json();
+        const trailers = await fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/videos?api_key=${this.props.api}&language=en-US`)
+        const parsedTrailers = await trailers.json();
         this.setState({
-            currentMovie: currentMovieParsed
+            currentMovie: currentMovieParsed,
+            trailers : parsedTrailers.results
         })
         }
     
     render(){   
-        
+        console.log(this.state);
         if(!this.state.currentMovie.id){
             return(
                 <div className="loading">
@@ -27,7 +30,6 @@ class Moviemodal extends Component {
                 </div>
             )
         }
-        console.log(this.state.currentMovie)
 
         const backgroundImage = this.state.currentMovie.backdrop_path
         let backgroundURL = `https://image.tmdb.org/t/p/original${backgroundImage}`
@@ -44,16 +46,32 @@ class Moviemodal extends Component {
             )
 
         }})
+
+        const movies = this.state.trailers.map(val => {
+            return(
+
+                <iframe width="200" height="200" 
+                title={val.id}
+                src={`https://www.youtube.com/embed/${val.key}`} 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen></iframe>
+            )
+        })
+        
+
+        
         
             return(
         <div className="individual_movie_page" style={
             {background: `url(${backgroundURL})`, 
             backgroundRepeat:`no-repeat`, 
             backgroundSize: "cover"}} >
-        
+
+
+
             <div className="individual_movie_page_pane"> 
                 
-
                 
 
 
@@ -102,6 +120,14 @@ class Moviemodal extends Component {
                 <div id="individual_movie_page_pane_productioncompanies">
                     {productionCompanies}
                 </div>
+
+                <div id="individual_movie_page_pane_movies">
+                    <div class="containermovies">
+                        
+                        {movies.slice(0, 10)}
+                    </div>
+                </div>
+        
             
             
             </div>
@@ -112,9 +138,12 @@ class Moviemodal extends Component {
             
             
     
-        
+
 
         </div>
+
+
+
             ) 
     }
     

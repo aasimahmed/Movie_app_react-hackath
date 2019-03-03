@@ -13,7 +13,6 @@ const Cinempageslider = ({leftSlide, cinemas, clickedCinema, selectedId}) => {
     return(
         <section>
             <h2> Pick a cinema</h2>
-            <span id="film"onClick={leftSlide}>X</span>
             <div className="movie_container">
                 <div className="slider">
                     {cinemalist}
