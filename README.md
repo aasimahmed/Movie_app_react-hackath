@@ -1,3 +1,15 @@
+Movie App
+Search for your favourite movies and shows
+
+Technologies used:
+React / Redux / React-Router-Dom / Sass / Gulp 
+HTML5/ CSS3/ Javascript
+
+
+
+
+
+
 What have I learnt while building this project?
 
 -----------------
